@@ -6,46 +6,34 @@ const App = () => {
   const [numbers, setNumbers] = useState([]);
   const [sum, setSum] = useState(0);
 
-  const handleAdd = () => {
-    if (input.trim() === "") return;
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setInput(value);
 
-    const num = parseInt(input);
-
-    if (!isNaN(num)) {
-      setNumbers((prev) => [...prev, num]);
-      setInput("");
+    if (value !== "") {
+      const num = parseInt(value);
+      setNumbers([num]);
+    } else {
+      setNumbers([]);
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      const total = numbers.reduce((acc, curr) => acc + curr, 0);
-      setSum(total);
-    }, 0);
+    const total = numbers.reduce((acc, curr) => acc + curr, 0);
+    setSum(total);
   }, [numbers]);
 
   return (
     <div>
       {/* Do not remove the main div */}
 
-      <h1>Sum Calculator</h1>
-
       <input
         type="number"
-        placeholder="Enter number"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={handleChange}
       />
 
-      <button onClick={handleAdd}>Add</button>
-
       <p>Sum: {sum}</p>
-
-      <ul>
-        {numbers.map((num, index) => (
-          <li key={index}>{num}</li>
-        ))}
-      </ul>
     </div>
   );
 };
