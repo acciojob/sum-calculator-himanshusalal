@@ -27,12 +27,13 @@ const App = () => {
     <div>
       {/* Do not remove the main div */}
 
-      <input
+      
+           <h1>Sum Calculator</h1>
+           <input
         type="number"
         value={input}
         onChange={handleChange}
       />
-
       <p>Sum: {sum}</p>
     </div>
   );
