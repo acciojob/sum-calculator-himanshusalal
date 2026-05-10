@@ -39,7 +39,7 @@ const App = () => {
 
       <button onClick={handleAdd}>Add</button>
 
-      <h2>Total Sum: {sum}</h2>
+      <p>Total Sum:{sum}</p>
 
       <ul>
         {numbers.map((num, index) => (
