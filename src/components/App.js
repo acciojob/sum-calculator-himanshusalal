@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-//import "./../styles/App.css";
+import "./../styles/App.css";
 
 const App = () => {
   const [input, setInput] = useState("");
   const [numbers, setNumbers] = useState([]);
   const [sum, setSum] = useState(0);
 
-  // Add number to array
   const handleAdd = () => {
     if (input.trim() === "") return;
 
@@ -18,24 +17,16 @@ const App = () => {
     }
   };
 
-  // Async sum calculation
   useEffect(() => {
-    const calculateSum = async () => {
-      const total = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(numbers.reduce((acc, curr) => acc + curr, 0));
-        }, 0);
-      });
-
+    setTimeout(() => {
+      const total = numbers.reduce((acc, curr) => acc + curr, 0);
       setSum(total);
-    };
-
-    calculateSum();
+    }, 0);
   }, [numbers]);
 
   return (
     <div>
-      /* Do not remove the main div */
+      {/* Do not remove the main div */}
 
       <h1>Sum Calculator</h1>
 
