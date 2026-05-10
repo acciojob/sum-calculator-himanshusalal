@@ -8,9 +8,7 @@ const App = () => {
     const value = parseInt(e.target.value);
 
     if (!isNaN(value)) {
-      setSum(value);
-    } else {
-      setSum(0);
+      setSum((prev) => prev + value);
     }
   };
 
@@ -20,7 +18,7 @@ const App = () => {
 
       <h1>Sum Calculator</h1>
 
-      <input type="number" onChange={handleChange} />
+      <input type="number" onBlur={handleChange} />
 
       <p>Sum: {sum}</p>
     </div>
